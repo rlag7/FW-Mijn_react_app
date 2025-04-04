@@ -9,104 +9,89 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div>
-      {/* Navbar */}
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Container>
-          <Navbar.Brand as={Link} to="/">React Bootstrap</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-          </Nav>
+      <div className="app-wrapper">
+        {/* Navbar */}
+        <Navbar className="glass-navbar" expand="lg">
+          <Container>
+            <Navbar.Brand as={Link} to="/">✨ Unieke App</Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse>
+              <Nav className="ms-auto">
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+
+        {/* Routing Section */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+
+        {/* Hero Cards Section */}
+        <section className="diagonal-section">
+          <Container fluid>
+            <Row className="gy-4 justify-content-center">
+              <Col md={5}>
+                <Card className="custom-card gradient-card shadow-lg">
+                  <Card.Body>
+                    <Card.Title>Lorem Ipsum 🔥</Card.Title>
+                    <Card.Text>Een moderne kaart met animaties en stijl.</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col md={5}>
+                <Card className="custom-card gradient-card-alt shadow-lg">
+                  <Card.Body>
+                    <Card.Title>Lorem Ipsum 🎉</Card.Title>
+                    <Card.Text>Nog een stijlvolle kaart met unieke kleuren.</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+
+        {/* Foto Cards Section */}
+        <Container className="mt-5">
+          <Row className="gy-4">
+            {["Foto 1", "Foto 2", "Foto 3"].map((title, index) => (
+                <Col md={4} key={index}>
+                  <Card className="foto-card shadow-sm">
+                    <Card.Img variant="top" src={`https://picsum.photos/600/40${index + 1}`} />
+                    <Card.Body>
+                      <Card.Title>{title}</Card.Title>
+                      <Card.Text>Beschrijving van {title.toLowerCase()}.</Card.Text>
+                      <Button className="btn-cyan">Meer Info</Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+            ))}
+          </Row>
         </Container>
-      </Navbar>
 
-      {/* Routing section */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+        {/* Grote Afbeelding */}
+        <Container className="mt-5">
+          <Card className="big-card shadow">
+            <Card.Img variant="top" src="https://via.placeholder.com/1200x300" />
+            <Card.Body>
+              <Card.Title>Grote Header Kaart</Card.Title>
+              <Card.Text>Een brede afbeelding met een call-to-action.</Card.Text>
+              <Button className="btn-pink">Lees Meer</Button>
+            </Card.Body>
+          </Card>
+        </Container>
 
-      {/* Full-Screen Section */}
-      <Container fluid className="d-flex justify-content-center align-items-center min-vh-100">
-        <Row className="w-100">
-          <Col md={6}>
-            <Card className="h-100">
-              <Card.Body>
-                <Card.Title className="bg-primary text-white p-2">lorem ipsum!</Card.Title>
-                <Card.Text>Dit is de eerste kaart met wat tekst.</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col md={6}>
-            <Card className="h-100">
-              <Card.Body>
-                <Card.Title className="bg-secondary text-white p-2">lorem ipsum</Card.Title>
-                <Card.Text>Dit is de eerste kaart met wat tekst.</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+        <div className="text-center mt-4">
+          <Button variant="primary" onClick={() => toast("Je klikte op de knop!")}>
+            Toon Notificatie
+          </Button>
+        </div>
 
-      {/* Main Content Section */}
-      <Container className="mt-4">
-        {/* Three Cards in a Row */}
-        <Row className="justify-content-center">
-          <Col md={4}>
-            <Card className="w-100">
-              <Card.Img variant="top" src="https://via.placeholder.com/600x400" />
-              <Card.Body>
-                <Card.Title className="text-primary">Foto 1</Card.Title>
-                <Card.Text>Dit is de eerste foto in de lijst.</Card.Text>
-                <Button variant="primary">Go Somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col md={4}>
-            <Card className="w-100">
-              <Card.Img variant="top" src="https://via.placeholder.com/600x400" />
-              <Card.Body>
-                <Card.Title className="text-secondary">Foto 2</Card.Title>
-                <Card.Text>Dit is de tweede foto in de lijst.</Card.Text>
-                <Button variant="primary">Go Somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col md={4}>
-            <Card className="w-100">
-              <Card.Img variant="top" src="https://via.placeholder.com/600x400" />
-              <Card.Body>
-                <Card.Title className="text-success">Foto 3</Card.Title>
-                <Card.Text>Dit is de derde foto in de lijst.</Card.Text>
-                <Button variant="primary">Go Somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-
-        {/* Full-Width Large Card */}
-        <Row className="mt-4">
-          <Col>
-            <Card className="w-100">
-              <Card.Img variant="top" src="https://via.placeholder.com/1200x300" />
-              <Card.Body>
-                <Card.Title>Grote Foto</Card.Title>
-                <Card.Text>Dit is een lange kaart met een grote foto en tekst eronder.</Card.Text>
-                <Button variant="primary">Go Somewhere</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-<br />
-      <Button variant="primary" onClick={() => toast("Je klikte op de knop!")}>
-  Go Somewhere
-</Button>
-
-
-      <ToastContainer />
-    </div>
+        <ToastContainer />
+      </div>
   );
 }
 

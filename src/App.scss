@@ -1,6 +1,5 @@
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap');
 
 $primary: #f94144;
 $secondary: #277da1;
@@ -10,47 +9,104 @@ $danger: #f3722c;
 $font-family-sans-serif: 'Roboto', sans-serif;
 $headings-font-family: 'Playfair Display', serif;
 
-
-@import "../node_modules/bootstrap/scss/bootstrap";
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  font-family: $font-family-sans-serif;
+  background: #f9f9f9;
+  color: #212529;
 }
 
-$theme-colors: map-merge($theme-colors,(
-  "primary": #F00,
-  "secondary": #00F,
-  "card-title": #F00
-));
-
-/* Add custom styles for buttons */
-.btn-cyan {
-  background-color: #00bcd4;
-  color: white;
-  border: none;
-  padding: 0.5em 1em;
-  border-radius: 0.25em;
-  transition: background-color 0.3s ease;
+.app-wrapper {
+  overflow-x: hidden;
 }
 
-.btn-cyan:hover {
-  background-color: #008c99;
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  color: #000;
+
+  .nav-link {
+    color: #000;
+    font-weight: 500;
+  }
+  .navbar-brand {
+    font-family: $headings-font-family;
+    font-size: 1.5rem;
+  }
 }
 
-.btn-pink {
-  background-color: #e91e63;
-  color: white;
-  border: none;
-  padding: 0.5em 1em;
-  border-radius: 0.25em;
-  transition: background-color 0.3s ease;
+.diagonal-section {
+  background: linear-gradient(135deg, #f94144 0%, #f3722c 100%);
+  padding: 5rem 0;
+  clip-path: polygon(0 0, 100% 5%, 100% 95%, 0% 100%);
+  color: #fff;
+
+  .custom-card {
+    background: #fff;
+    border: none;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .card-title {
+      font-family: $headings-font-family;
+    }
+  }
+
+  .gradient-card {
+    background: linear-gradient(45deg, #f94144, #f3722c);
+    color: #fff;
+  }
+
+  .gradient-card-alt {
+    background: linear-gradient(45deg, #277da1, #43aa8b);
+    color: #fff;
+  }
 }
 
-.btn-pink:hover {
-  background-color: #c2185b;
+.foto-card {
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-title {
+    font-family: $headings-font-family;
+    font-size: 1.3rem;
+  }
+
+  .btn-cyan {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+
+    &:hover {
+      background-color: #008c99;
+    }
+  }
 }
 
-@import "../node_modules/bootstrap/scss/bootstrap";
+.big-card {
+  border-radius: 1rem;
+  overflow: hidden;
+
+  .btn-pink {
+    background-color: #e91e63;
+    color: white;
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 0.5em;
+
+    &:hover {
+      background-color: #c2185b;
+    }
+  }
+}
