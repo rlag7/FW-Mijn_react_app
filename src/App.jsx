@@ -7,6 +7,9 @@ import Contact from './pages/contact';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// MUI Component
+import { Alert, Stack } from '@mui/material';
+
 function App() {
     const fotoImages = [
         "https://images.unsplash.com/photo-1506744038136-46273834b3fb", // Foto 1
@@ -113,14 +116,13 @@ function App() {
                 </Card>
             </Container>
 
-            {/* Notification Button */}
-            <div className="text-center mt-4">
-                <Button variant="primary" onClick={() => toast("Je klikte op de knop!")}>
-                    Toon Notificatie
-                </Button>
-            </div>
 
-            <ToastContainer />
+            {/* MUI Alert voorbeeld */}
+            <Container className="mt-5">
+                <Stack sx={{ width: '100%' }} spacing={2}>
+                    <Alert severity="info">Dit is een informatieve melding met MUI ✅</Alert>
+                </Stack>
+            </Container>
         </div>
     );
 }
