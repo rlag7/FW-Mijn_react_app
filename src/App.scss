@@ -1,0 +1,56 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+
+$primary: #f94144;
+$secondary: #277da1;
+$success: #43aa8b;
+$danger: #f3722c;
+
+$font-family-sans-serif: 'Roboto', sans-serif;
+$headings-font-family: 'Playfair Display', serif;
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+$theme-colors: map-merge($theme-colors,(
+  "primary": #F00,
+  "secondary": #00F,
+  "card-title": #F00
+));
+
+/* Add custom styles for buttons */
+.btn-cyan {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cyan:hover {
+  background-color: #008c99;
+}
+
+.btn-pink {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  transition: background-color 0.3s ease;
+}
+
+.btn-pink:hover {
+  background-color: #c2185b;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";
