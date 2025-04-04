@@ -8,91 +8,121 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  return (
-      <div className="app-wrapper">
-        {/* Navbar */}
-        <Navbar className="glass-navbar" expand="lg">
-          <Container>
-            <Navbar.Brand as={Link} to="/">✨ Unieke App</Navbar.Brand>
-            <Navbar.Toggle />
-            <Navbar.Collapse>
-              <Nav className="ms-auto">
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
-                <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
+    const fotoImages = [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb", // Foto 1
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb", // Foto 2
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb", // Foto 3
+    ];
 
-        {/* Routing Section */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+    const heroImages = [
+        "https://images.unsplash.com/photo-1518770660439-4636190af475", // Hero Card 1
+        "https://images.unsplash.com/photo-1549924231-f129b911e442", // Hero Card 2
+    ];
 
-        {/* Hero Cards Section */}
-        <section className="diagonal-section">
-          <Container fluid>
-            <Row className="gy-4 justify-content-center">
-              <Col md={5}>
-                <Card className="custom-card gradient-card shadow-lg">
-                  <Card.Body>
-                    <Card.Title>Lorem Ipsum 🔥</Card.Title>
-                    <Card.Text>Een moderne kaart met animaties en stijl.</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={5}>
-                <Card className="custom-card gradient-card-alt shadow-lg">
-                  <Card.Body>
-                    <Card.Title>Lorem Ipsum 🎉</Card.Title>
-                    <Card.Text>Nog een stijlvolle kaart met unieke kleuren.</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        </section>
+    return (
+        <div className="app-wrapper">
+            {/* Navbar */}
+            <Navbar className="glass-navbar" expand="lg">
+                <Container>
+                    <Navbar.Brand as={Link} to="/">✨ Unieke App</Navbar.Brand>
+                    <Navbar.Toggle />
+                    <Navbar.Collapse>
+                        <Nav className="ms-auto">
+                            <Nav.Link as={Link} to="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
 
-        {/* Foto Cards Section */}
-        <Container className="mt-5">
-          <Row className="gy-4">
-            {["Foto 1", "Foto 2", "Foto 3"].map((title, index) => (
-                <Col md={4} key={index}>
-                  <Card className="foto-card shadow-sm">
-                    <Card.Img variant="top" src={`https://picsum.photos/600/40${index + 1}`} />
+            {/* Routing */}
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+
+            {/* Hero Cards */}
+            <section className="diagonal-section">
+                <Container fluid>
+                    <Row className="gy-4 justify-content-center">
+                        <Col md={5}>
+                            <Card className="custom-card gradient-card shadow-lg">
+                                <Card.Img
+                                    variant="top"
+                                    src={`${heroImages[0]}?auto=format&fit=crop&w=800&q=80`}
+                                    alt="Hero Image 1"
+                                />
+                                <Card.Body>
+                                    <Card.Title>Lorem Ipsum 🔥</Card.Title>
+                                    <Card.Text>Een moderne kaart met animaties en stijl.</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        <Col md={5}>
+                            <Card className="custom-card gradient-card-alt shadow-lg">
+                                <Card.Img
+                                    variant="top"
+                                    src={`${heroImages[1]}?auto=format&fit=crop&w=800&q=80`}
+                                    alt="Hero Image 2"
+                                />
+                                <Card.Body>
+                                    <Card.Title>Lorem Ipsum 🎉</Card.Title>
+                                    <Card.Text>Nog een stijlvolle kaart met unieke kleuren.</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+
+            {/* Foto Cards */}
+            <Container className="mt-5">
+                <Row className="gy-4">
+                    {["Foto 1", "Foto 2", "Foto 3"].map((title, index) => (
+                        <Col md={4} key={index}>
+                            <Card className="foto-card shadow-sm">
+                                <Card.Img
+                                    variant="top"
+                                    src={`${fotoImages[index]}?auto=format&fit=crop&w=600&q=80`}
+                                    alt={title}
+                                />
+                                <Card.Body>
+                                    <Card.Title>{title}</Card.Title>
+                                    <Card.Text>Beschrijving van {title.toLowerCase()}.</Card.Text>
+                                    <Button className="btn-cyan">Meer Info</Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
+
+            {/* Grote Afbeelding */}
+            <Container className="mt-5">
+                <Card className="big-card shadow">
+                    <Card.Img
+                        variant="top"
+                        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=max&ixid=MXwyMDg5OXwwfDF8c2VhcmNofDJ8fGRvY3VtZW50YXMlMjBwcm9kdWN0c3xlbnwwfHx8fDE2ODU5MTYyMjI&ixlib=rb-1.2.1&q=80&w=600"
+                        alt="Grote header afbeelding"
+                    />
                     <Card.Body>
-                      <Card.Title>{title}</Card.Title>
-                      <Card.Text>Beschrijving van {title.toLowerCase()}.</Card.Text>
-                      <Button className="btn-cyan">Meer Info</Button>
+                        <Card.Title>Grote Header Kaart</Card.Title>
+                        <Card.Text>Een brede afbeelding met een call-to-action.</Card.Text>
+                        <Button className="btn-pink">Lees Meer</Button>
                     </Card.Body>
-                  </Card>
-                </Col>
-            ))}
-          </Row>
-        </Container>
+                </Card>
+            </Container>
 
-        {/* Grote Afbeelding */}
-        <Container className="mt-5">
-          <Card className="big-card shadow">
-            <Card.Img variant="top" src="https://via.placeholder.com/1200x300" />
-            <Card.Body>
-              <Card.Title>Grote Header Kaart</Card.Title>
-              <Card.Text>Een brede afbeelding met een call-to-action.</Card.Text>
-              <Button className="btn-pink">Lees Meer</Button>
-            </Card.Body>
-          </Card>
-        </Container>
+            {/* Notification Button */}
+            <div className="text-center mt-4">
+                <Button variant="primary" onClick={() => toast("Je klikte op de knop!")}>
+                    Toon Notificatie
+                </Button>
+            </div>
 
-        <div className="text-center mt-4">
-          <Button variant="primary" onClick={() => toast("Je klikte op de knop!")}>
-            Toon Notificatie
-          </Button>
+            <ToastContainer />
         </div>
-
-        <ToastContainer />
-      </div>
-  );
+    );
 }
 
 export default App;
